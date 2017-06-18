@@ -86,6 +86,7 @@ RUN apk -U --no-cache add openssl-dev pcre-dev zlib-dev linux-headers wget build
     make && \
     make install && \
     apk del build-base && \
+    mkdir -p /etc/nginx/ssl && \
     rm -rf /tmp/src && \
     rm -rf /var/cache/apk/* && \
     ln -sf /dev/stdout /var/log/nginx/access.log && \
@@ -93,6 +94,11 @@ RUN apk -U --no-cache add openssl-dev pcre-dev zlib-dev linux-headers wget build
     nginx -V
 
 ADD ./bitrixenv_error/ /var/www/bitrixenv_error/
+
+ADD bx/ /etc/nginx/bx/
+ADD conf.d/ /etc/nginx/conf.d/
+ADD snippets/ /etc/nginx/snippets/
+ADD nginx.conf /etc/nginx/nginx.conf
 
 WORKDIR /home/bitrix/www
 

@@ -100,7 +100,7 @@ ADD conf.d/ /etc/nginx/conf.d/
 ADD snippets/ /etc/nginx/snippets/
 ADD nginx.conf /etc/nginx/nginx.conf
 
-WORKDIR /home/bitrix/www
+WORKDIR /home/bitrix
 
 CMD ["nginx", "-g", "daemon off;"]
 
